@@ -2,6 +2,10 @@ import React from 'react';
 import { createAppContainer ,createSwitchNavigator} from 'react-navigation';
 import { createStackNavigator} from 'react-navigation-stack';
 import { createDrawerNavigator,DrawerNavigatorItems} from 'react-navigation-drawer';
+import PlacesListScreen from '../screens/PlacesListScreen';
+import PlaceDetailScreen from '../screens/PlaceDetailScreen';
+import NewPlaceScreen from '../screens/NewPlaceScreen';
+import MapScreen from '../screens/MapScreen';
 import CartScreen from '../screens/shop/CartScreen';
 import SafeAreaView from 'react-native-safe-area-view';
 import { Ionicons } from '@expo/vector-icons';
@@ -49,7 +53,26 @@ const ProductsNavigator = createStackNavigator(
     defaultNavigationOptions: defaultNavOptions
   }
 );
-
+const PlacesNavigator = createStackNavigator(
+  {
+    Places: PlacesListScreen,
+    PlaceDetail: PlaceDetailScreen,
+    NewPlace: NewPlaceScreen,
+    Map: MapScreen
+  },
+  {
+    navigationOptions: {
+      drawerIcon: drawerConfig => (
+        <Ionicons
+          name={Platform.OS === 'android' ? 'md-image' : 'ios-image'}
+          size={23}
+          color={drawerConfig.tintColor}
+        />
+      )
+    },
+    defaultNavigationOptions: defaultNavOptions
+  }
+);
 const OrdersNavigator = createStackNavigator(
   {
     Orders: OrdersScreen
@@ -91,6 +114,7 @@ const AdminNavigator = createStackNavigator(
     {
       Products: ProductsNavigator,
       Orders: OrdersNavigator,
+      Place: PlacesNavigator,
       Admin: AdminNavigator
     },
     {
