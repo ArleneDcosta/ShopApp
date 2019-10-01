@@ -114,7 +114,7 @@ const AdminNavigator = createStackNavigator(
     {
       Products: ProductsNavigator,
       Orders: OrdersNavigator,
-      Place: PlacesNavigator,
+      Images: PlacesNavigator,
       Admin: AdminNavigator
     },
     {
