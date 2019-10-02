@@ -15,7 +15,7 @@ const PlacesListScreen = props => {
       keyExtractor={item => item.id}
       renderItem={itemData => (
         <PlaceItem
-          image={null}
+          image={itemData.item.imageUri}
           title={itemData.item.title}
           address={null}
           onSelect={() => {
@@ -32,7 +32,7 @@ const PlacesListScreen = props => {
 
 PlacesListScreen.navigationOptions = navData => {
   return {
-    headerTitle: 'All Images',
+    headerTitle: 'All Places',
     headerRight: (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
