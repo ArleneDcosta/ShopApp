@@ -12,6 +12,17 @@ import authReducer from './store/reducers/auth';
 import cartReducer from './store/reducers/cart';
 import NavigationContainer from './navigation/NavigationContainer';
 
+import { init } from './helpers/db';
+
+init()
+  .then(() => {
+    console.log('Initialized database');
+  })
+  .catch(err => {
+    console.log('Initializing db failed.');
+    console.log(err);
+  });
+
 const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
